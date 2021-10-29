@@ -1,0 +1,43 @@
+
+body::-webkit-scrollbar
+{
+    width: 10px;
+    background-color: #F5F5F5;
+}
+
+body::-webkit-scrollbar-thumb
+{
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 4px rgba(38, 168, 255, 0.8);;
+    background-color: rgba(5, 155, 255, 0.8);
+}
+
+.menu-wrapper  {
+    box-sizing: border-box;
+    background: white;
+    z-index: 100;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    padding: 10px;
+    .logo {
+        img {
+            height: 50px;
+        }
+    }
+
+    .search {
+        background: transparent;
+    }
+}
+
+.content-wrapper {
+    margin-top: 80px;
+    padding:0rem 2rem;
+}
+
+.p-tabview-title {
+    margin-left: 10px;
+}

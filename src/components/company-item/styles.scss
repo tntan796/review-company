@@ -1,0 +1,57 @@
+.company {
+    &-item {
+        padding: 20px 0px;
+        display: flex;
+        align-items: center;
+        border-radius: 10px;
+        &:hover {
+            box-shadow: 0 0 5px gray;
+            cursor: pointer;
+            transition: 0.5 ease-in-out;
+        }
+        .logo {
+            img {
+                max-width: 100px;
+            }
+            margin-right: 20px;
+        }
+    
+        .content {
+            line-height: 28px;
+            .title {
+                display: flex;
+                gap: 15px;
+                align-items: center;
+    
+                .name {
+                    font-size: 20px;
+                    color: dodgerblue;
+                    font-weight: 500;
+                }
+                .rating {
+                    .p-rating .p-rating-icon {
+                        font-size: 0.8rem;
+                    }
+                }
+                .total-coment {
+                    font-size: 0.8rem;
+                    font-weight: bold;
+                }
+            }
+        
+            .sub-title {
+                display: flex;
+                gap: 15px;
+                align-items: center;
+            }
+        
+            .type {
+        
+            }
+        
+            .size {
+        
+            }
+        }
+    }
+}
