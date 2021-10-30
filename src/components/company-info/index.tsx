@@ -1,26 +1,46 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router';
+import { Company } from '../../models/company.model';
+import companyService from '../../services/company.service';
 import './styles.scss';
 function CompanyInfo() {
+    let { id } = useParams<any>();
+    const [detail, setDetail] = useState<Company>(new Company());
+    useEffect(() => {
+        if (id) {
+            fetchData();
+        }
+    }, [id])
+
+    const fetchData = () => {
+        companyService.getCompanyById(id)
+        .then(response => {
+            if (response.data.StatusCode == 200) {
+                console.log(response);
+                setDetail(response.data.Data);
+            }
+        })
+    }
+
     return (
         <div className="company-info-wrapper">
             <div className="logo">
-                <img src="https://infocongty.com/Images/Companies/aperia-solutions-vietnam-co-ltd-logo.png" alt="logo" />
+                <img src={detail?.Logo} alt="logo" />
             </div>
             <div className="content">
                 <div className="type">
-                    <i className="pi pi-briefcase"></i> Outsource
+                    <i className="pi pi-briefcase"></i> {detail?.Type}
                 </div>
                 <div className="address">
-                    <i className="pi pi-map"></i> 17 Duy Tân, Cầu Giấy, Hà Nội
+                    <i className="pi pi-map"></i> {detail?.Address}
                 </div>
                 <div className="size">
-                    <i className="pi pi-users"></i> 1000
+                    <i className="pi pi-users"></i> {detail?.Size}
                 </div>
                 <div className="description">
-                    FPT Software thành lập năm 1999, là công ty thành viên của FPT, Tập đoàn Công nghệ hàng đầu của Việt Nam. Sau 20 năm thành lập FPT Software hiện đang là công ty phần mềm lớn nhất của Việt Nam và đứng trong Top 100 Nhà cung cấp dịch vụ Outsourcing toàn cầu do International Association of Outsourcing Professionals (IAOP) đánh giá. Nhiều năm liền, FPT Software được bình chọn là Nhà Tuyển dụng được yêu thích nhất và nằm trong TOP các công ty có môi trường làm việc tốt nhất Việt Nam.
+                    {detail?.Description}
                 </div>
             </div>
-           
         </div>
     );
 }
