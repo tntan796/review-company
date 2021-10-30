@@ -1,0 +1,13 @@
+.company-info-wrapper {
+    display: flex;
+
+    .logo {
+        img {
+            max-width: 150px;
+        }
+    }   
+
+    .content {
+        line-height: 25px;
+    }
+}

@@ -9,9 +9,15 @@
             cursor: pointer;
             transition: 0.5 ease-in-out;
         }
+
+        a {
+            text-decoration: none;
+        }
+
         .logo {
             img {
                 max-width: 100px;
+                min-width: 100px;
             }
             margin-right: 20px;
         }
