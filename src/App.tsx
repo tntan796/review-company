@@ -50,9 +50,9 @@ function App() {
         <div className="wrapper-container">
           <div className="menu-wrapper p-grid p-shadow-3">
             <div className="p-col-8">
-              <div className="logo">
+              <Link className="logo" to='/'>
                 <img src="/images/logo.PNG" alt="logo" />
-              </div>
+              </Link>
             </div>
             <div className="p-col-4">
               <div className="search-wrapper">
