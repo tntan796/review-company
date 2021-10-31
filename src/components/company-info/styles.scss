@@ -4,10 +4,13 @@
     .logo {
         img {
             max-width: 150px;
+            width: 150px;
         }
     }   
 
     .content {
         line-height: 25px;
+        padding-left: 25px;
+        text-align: justify;
     }
 }

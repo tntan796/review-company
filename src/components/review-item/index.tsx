@@ -32,7 +32,7 @@ function ReviewItem(props: PropType) {
                 </div>
                 <div className="action-wrapper p-mt-2">
                     <div className="action">
-                        <Button label="Comment" className="p-button-text" icon="pi pi-thumbs-up" />
+                        <Button label="Comment" className="p-button-success p-button-text" icon="pi pi-comments" />
                         <Button label="Thích" className="p-button-text" icon="pi pi-thumbs-up" />
                         <Button label="Ghét" className="p-button-danger p-button-text" icon="pi pi-thumbs-down" />
                     </div>

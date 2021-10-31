@@ -72,9 +72,9 @@ function CompanyDetail() {
                     </div>
                 </div>
             </div>
-            <Dialog header="Header" visible={displayBasic} modal style={{ width: '50vw' }} onHide={() => setDisplayBasic(false)}
+            <Dialog header="Review công ty" visible={displayBasic} modal style={{ width: '50vw' }} onHide={() => setDisplayBasic(false)}
                 draggable={false} resizable={false}>
-                <ReviewForm/>
+                <ReviewForm closeModel = {() => setDisplayBasic(false)}/>
             </Dialog>
         </div>
     );
