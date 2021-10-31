@@ -1,27 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router';
-import { Company } from '../../models/company.model';
-import companyService from '../../services/company.service';
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
 import './styles.scss';
 function CompanyInfo() {
-    let { id } = useParams<any>();
-    const [detail, setDetail] = useState<Company>(new Company());
-    useEffect(() => {
-        if (id) {
-            fetchData();
-        }
-    }, [id])
-
-    const fetchData = () => {
-        companyService.getCompanyById(id)
-        .then(response => {
-            if (response.data.StatusCode == 200) {
-                console.log(response);
-                setDetail(response.data.Data);
-            }
-        })
-    }
-
+    const detail = useSelector((state: RootState) => state.companyDetail.company);
     return (
         <div className="company-info-wrapper">
             <div className="logo">

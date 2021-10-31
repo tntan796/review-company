@@ -6,12 +6,13 @@ import { Button } from 'primereact/button';
 import { classNames } from 'primereact/utils';
 import { Dropdown } from 'primereact/dropdown';
 import { InputTextarea } from 'primereact/inputtextarea';
+import { useDispatch } from 'react-redux';
+import { hideDialog, setFormData, showDialog } from '../../redux/features/review-form/reviewFormSlice';
 type PropsType = {
-    closeModel: () => void
+    // closeModel: () => void
 }
 function ReviewForm(props: PropsType) {
-    const [formData, setFormData] = useState({});
-    const {closeModel} = props;
+    const dispatch = useDispatch();
     const [ratings, setRatings] = useState(
     [
         {"name": "1 điểm - Max chán, né gấp kẻo hối không kịp", "code": 1},
@@ -36,8 +37,8 @@ function ReviewForm(props: PropsType) {
             return errors;
         },
         onSubmit: (data) => {
-            setFormData(data);
-            closeModel();
+            dispatch(hideDialog());
+            dispatch(setFormData({...data, rating: data.rating.code}));
             // formik.resetForm();
         }
     });

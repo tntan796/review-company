@@ -7,14 +7,18 @@ import { FilterReviewModel } from '../../models/filter.model';
 import { Paginator } from 'primereact/paginator';
 import { Toast } from 'primereact/toast';
 import { Review } from '../../models/review.model';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
+import { setReviews } from '../../redux/features/company-detail/companyDetailSlice';
 function ReviewList() {
     let { id } = useParams<any>();
     const toast: any = useRef(null);
-    const [reviews, setReviews] = useState([]);
     const [offset, setOffset] = useState(0);
     const [pageSize, setPageSize] = useState(10);
     const [totalRecord, setTotalRecord] = useState(0);
-    
+    const reviews = useSelector((state: RootState) => state.companyDetail.reviews);
+    const dispatch = useDispatch();
+
     useEffect(() => {
         if (id !== -1) {
             fetchData();
@@ -28,9 +32,8 @@ function ReviewList() {
         filterModel.offSet = offset;
         reviewService.getReviews(filterModel)
             .then(response => {
-                console.log('Detail:', response);
                 if (response.data && response.data.StatusCode === 200) {
-                    setReviews(response.data.Data.Data);
+                    dispatch(setReviews(response.data.Data.Data));
                     setTotalRecord(response.data.Data.RecordsTotal);
                 }
             }).catch(error => {
@@ -48,8 +51,8 @@ function ReviewList() {
             {
                 reviews && reviews.map((review: Review) => (
                     <ReviewItem
-                        key = {review.Id}
-                        review = {review}
+                        key={review.Id}
+                        review={review}
                     />
                 ))
             }

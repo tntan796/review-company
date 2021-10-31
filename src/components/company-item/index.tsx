@@ -45,7 +45,7 @@ function CompanyItem(props: PropTypes) {
                     </div>
                 </div>
                 <div className="address">
-                    <i className="pi pi-map"></i>{company?.Address}
+                    <i className="pi pi-map"></i> {company?.Address}
                 </div>
             </div>
         </div>
