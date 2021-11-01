@@ -1,7 +1,9 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { useDispatch } from 'react-redux';
 import { ReviewActionType } from '../../../common/type';
 import { Review } from '../../../models/review.model';
 import reviewService from '../../../services/review.service';
+import { addReview } from '../company-detail/companyDetailSlice';
 
 export interface ReviewFormState {
     showDialog: boolean,
@@ -33,8 +35,9 @@ const initialState: ReviewFormState = {
     loading: false
 }
 
-export const setReview = createAsyncThunk('review/reply', async(data: Review) => {
+export const setReview = createAsyncThunk('review/reply', async(data: Review, {dispatch}) => {
     const response = await reviewService.setReview(data);
+    dispatch(addReview(data));
     return response.data;
 })
 
@@ -49,7 +52,7 @@ export const reviewFormSlice = createSlice({
             state.showDialog = false;
         },
         resetForm: (state) => {
-            state = initialState
+            state = initialState;
         },
         setCompanyId: (state, action: PayloadAction<number | null>) => {
             state.companyId = action.payload
