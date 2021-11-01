@@ -1,12 +1,13 @@
 export class Review {
-    Id = '';
-    ParentId? = '';
+    Id? = '';
+    ParentId?: string | null = '';
     Created? = 0;
     UserName? = '';
     Comment? = '';
     IsFavourite? = '';
     Time? = '';
-    Star? = '';
-    CompanyId? = -1;
-    Replies: Review[] = []
+    Star? : string | {name: string, code: string} = '';
+    CompanyId?: number | null = -1;
+    Favourite = 0;
+    Replies?: Review[] = []
 }

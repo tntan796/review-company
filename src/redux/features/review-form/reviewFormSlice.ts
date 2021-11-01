@@ -1,5 +1,7 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { ReviewActionType } from '../../../common/type';
+import { Review } from '../../../models/review.model';
+import reviewService from '../../../services/review.service';
 
 export interface ReviewFormState {
     showDialog: boolean,
@@ -10,9 +12,10 @@ export interface ReviewFormState {
         rating: string,
         review: string,
     },
-    companyId: string,
-    commentId: string,
-    type: ReviewActionType
+    companyId: number | null,
+    commentId: string | null,
+    type: ReviewActionType,
+    loading: boolean
 }
 
 const initialState: ReviewFormState = {
@@ -24,10 +27,16 @@ const initialState: ReviewFormState = {
         rating: '',
         review: '',
     },
-    companyId: '',
+    companyId: -1,
     commentId: '',
-    type: ReviewActionType.add
+    type: ReviewActionType.add,
+    loading: false
 }
+
+export const setReview = createAsyncThunk('review/reply', async(data: Review) => {
+    const response = await reviewService.setReview(data);
+    return response.data;
+})
 
 export const reviewFormSlice = createSlice({
     name: 'review-form',
@@ -42,10 +51,10 @@ export const reviewFormSlice = createSlice({
         resetForm: (state) => {
             state = initialState
         },
-        setCompanyId: (state, action: PayloadAction<string>) => {
+        setCompanyId: (state, action: PayloadAction<number | null>) => {
             state.companyId = action.payload
         },
-        setCommentId: (state, action: PayloadAction<string>) => {
+        setCommentId: (state, action: PayloadAction<string | null>) => {
             state.commentId = action.payload
         },
         setReviewActionType: (state, action: PayloadAction<ReviewActionType>) => {
@@ -54,12 +63,26 @@ export const reviewFormSlice = createSlice({
         setFormData: (state, action: PayloadAction<any>) => {
             state.data = action.payload
         },
+        setLoading: (state, action: PayloadAction<boolean>) => {
+            state.loading = action.payload;
+        }
         // incrementByAmount: (state, action: PayloadAction<number>) => {
         //     state.value += action.payload
         // },
     },
+    extraReducers: (builder) => {
+        builder.addCase(setReview.pending, (state, action) => {
+
+        })
+        builder.addCase(setReview.rejected, (state, action) => {
+            state.loading = false;
+        })
+        builder.addCase(setReview.fulfilled, (state, action) => {
+            state.loading = false;
+        })
+    }
 })
 
 // Action creators are generated for each case reducer function
-export const { showDialog, hideDialog, resetForm, setCompanyId, setCommentId, setReviewActionType, setFormData } = reviewFormSlice.actions
+export const { showDialog, hideDialog, resetForm, setCompanyId, setCommentId, setReviewActionType, setFormData, setLoading } = reviewFormSlice.actions;
 export default reviewFormSlice.reducer

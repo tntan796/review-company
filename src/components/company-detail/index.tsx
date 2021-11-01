@@ -10,7 +10,7 @@ import { Dialog } from 'primereact/dialog';
 import ReviewForm from '../review-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
-import { showDialog, hideDialog} from '../../redux/features/review-form/reviewFormSlice';
+import { showDialog, hideDialog, setCommentId, setCompanyId} from '../../redux/features/review-form/reviewFormSlice';
 import { useParams } from 'react-router';
 import { Company } from '../../models/company.model';
 import companyService from '../../services/company.service';
@@ -37,10 +37,16 @@ function CompanyDetail() {
         .then(response => {
             if (response.data.StatusCode == 200) {
                 dispatch(setDetail(response.data.Data));
+                dispatch(setCompanyId(id));
             }
         })
     }
 
+    const addReview = () => {
+        dispatch(showDialog());
+        dispatch(setCommentId(null));
+    }
+    
     return (
         <div className="detail-wrapper">
             <BreadCrumb model={items} home={home} />
@@ -84,7 +90,7 @@ function CompanyDetail() {
                         </div>
                     </div>
                     <div className="actions p-mt-2">
-                        <Button label="Viết review" onClick={() => dispatch(showDialog())} />
+                        <Button label="Viết review" onClick={() => addReview()} />
                     </div>
                 </div>
             </div>
