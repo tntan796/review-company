@@ -31,7 +31,7 @@ function ReviewItem(props: PropType) {
                         </div>
                         <div className="name">{review?.UserName}</div>
                         <div className="rating p-ml-2">
-                            <Rating value={3} cancel={false} disabled stars={5} />
+                            <Rating value={review?.Rating} cancel={false} disabled stars={5} />
                         </div>
                     </div>
                     <div className="right">
@@ -65,7 +65,7 @@ function ReviewItem(props: PropType) {
                                             </div>
                                             <div className="name">{reply?.UserName}
                                                 <span className="p-ml-1">
-                                                    <i className="pi pi-thumbs-up"></i>
+                                                    <i className={reply?.Favourite == ReviewActionType.like ? "pi pi-thumbs-up" : "pi pi-thumbs-down red"}></i>
                                                 </span>
                                             </div>
                                         </div>

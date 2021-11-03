@@ -1,6 +1,6 @@
 export enum ReviewActionType {
-    add,
-    comment,
-    like,
-    dislike
+    add, // 0
+    comment, // 1
+    like, //2
+    dislike //3
 }

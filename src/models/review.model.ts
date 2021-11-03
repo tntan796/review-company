@@ -1,3 +1,5 @@
+import { ReviewActionType } from "../common/type";
+
 export class Review {
     Id? = '';
     ParentId?: string | null = '';
@@ -8,6 +10,7 @@ export class Review {
     Time? = '';
     Star? : string | {name: string, code: string} = '';
     CompanyId?: number | null = -1;
-    Favourite = 0;
+    Rating? = 0;
+    Favourite?: ReviewActionType = ReviewActionType.like;
     Replies?: Review[] = []
 }
