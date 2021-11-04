@@ -9,7 +9,7 @@ import { Toast } from 'primereact/toast';
 import { Review } from '../../models/review.model';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
-import { setReviews } from '../../redux/features/company-detail/companyDetailSlice';
+import { setRatingAverage, setReviews } from '../../redux/features/company-detail/companyDetailSlice';
 function ReviewList() {
     let { id } = useParams<any>();
     const toast: any = useRef(null);
@@ -33,7 +33,8 @@ function ReviewList() {
         reviewService.getReviews(filterModel)
             .then(response => {
                 if (response.data && response.data.StatusCode === 200) {
-                    dispatch(setReviews(response.data.Data.Data));
+                    dispatch(setReviews(response.data.Data.Data.Review));
+                    dispatch(setRatingAverage(response.data.Data.Data.RatingsAverage));
                     setTotalRecord(response.data.Data.RecordsTotal);
                 }
             }).catch(error => {

@@ -11,12 +11,14 @@ export const getCompanyDetail = createAsyncThunk('company/detail', async(params,
 
 export interface CompanyDetailState {
     company?: Company,
-    reviews?: Review[]
+    reviews?: Review[],
+    ratingAverage?: number[]
 }
 
 const initialState: CompanyDetailState = {
     company: undefined,
-    reviews: []
+    reviews: [],
+    ratingAverage: []
 }
 
 export const companyDetailSlice = createSlice({
@@ -28,6 +30,9 @@ export const companyDetailSlice = createSlice({
         },
         setDetail: (state, action: PayloadAction<Company>) => {
             state.company = action.payload
+        },
+        setRatingAverage: (state, action: PayloadAction<number[]>) => {
+            state.ratingAverage = action.payload
         },
         addReview: (state, action: PayloadAction<Review>) => {
             if (action.payload.ParentId === null) {
@@ -45,5 +50,5 @@ export const companyDetailSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { setReviews, setDetail, addReview } = companyDetailSlice.actions
+export const { setReviews, setDetail, addReview, setRatingAverage } = companyDetailSlice.actions
 export default companyDetailSlice.reducer

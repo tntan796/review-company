@@ -18,6 +18,8 @@ import { setDetail } from '../../redux/features/company-detail/companyDetailSlic
 
 function CompanyDetail() {
     const isShowDialog = useSelector((state: RootState) => state.reviewForm.showDialog);
+    const ratingAvg = useSelector((state: RootState) => state.companyDetail.ratingAverage);
+    
     const dispatch = useDispatch();
     const items = [
         { label: 'Trang chủ', url: '/' },
@@ -60,33 +62,33 @@ function CompanyDetail() {
                     <div className="rating-summary">
                         <div className="rating-item">
                             <div className="rating">
-                                <Rating value={3} cancel={false} disabled stars={5} />
+                                <Rating value={1} cancel={false} disabled stars={5} />
                             </div>
-                            <div className="percent"> 16% </div>
+                            <div className="percent"> {ratingAvg ? ratingAvg[0] * 100 : 0} % </div>
+                        </div>
+                        <div className="rating-item">
+                            <div className="rating">
+                                <Rating value={2} cancel={false} disabled stars={5} />
+                            </div>
+                            <div className="percent"> {ratingAvg ? ratingAvg[1] * 100 : 0} % </div>
                         </div>
                         <div className="rating-item">
                             <div className="rating">
                                 <Rating value={3} cancel={false} disabled stars={5} />
                             </div>
-                            <div className="percent"> 16% </div>
+                            <div className="percent"> {ratingAvg ? ratingAvg[2] * 100 : 0} %  </div>
                         </div>
                         <div className="rating-item">
                             <div className="rating">
-                                <Rating value={3} cancel={false} disabled stars={5} />
+                                <Rating value={4} cancel={false} disabled stars={5} />
                             </div>
-                            <div className="percent"> 16%  </div>
+                            <div className="percent"> {ratingAvg ? ratingAvg[3] * 100 : 0} % </div>
                         </div>
                         <div className="rating-item">
                             <div className="rating">
-                                <Rating value={3} cancel={false} disabled stars={5} />
+                                <Rating value={5} cancel={false} disabled stars={5} />
                             </div>
-                            <div className="percent"> 16% </div>
-                        </div>
-                        <div className="rating-item">
-                            <div className="rating">
-                                <Rating value={3} cancel={false} disabled stars={5} />
-                            </div>
-                            <div className="percent"> 16% </div>
+                            <div className="percent"> {ratingAvg ? ratingAvg[4] * 100 : 0} % </div>
                         </div>
                     </div>
                     <div className="actions p-mt-2">
