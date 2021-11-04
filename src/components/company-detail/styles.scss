@@ -5,3 +5,18 @@
         justify-content: space-between;
     }
 }
+.one .p-rating .p-rating-icon.pi-star {
+    color: red !important;
+}
+.two .p-rating .p-rating-icon.pi-star {
+    color: orange !important;
+}
+.three .p-rating .p-rating-icon.pi-star {
+    color: rgb(192, 192, 12) !important;
+}
+.four .p-rating .p-rating-icon.pi-star {
+    color: rgb(130, 214, 5) !important;
+}
+.five .p-rating .p-rating-icon.pi-star {
+    color: rgb(2, 92, 2) !important;
+}

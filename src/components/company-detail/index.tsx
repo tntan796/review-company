@@ -61,30 +61,30 @@ function CompanyDetail() {
                 <div className="p-col-0 p-md-3">
                     <div className="rating-summary">
                         <div className="rating-item">
-                            <div className="rating">
+                            <div className="rating one">
                                 <Rating value={1} cancel={false} disabled stars={5} />
                             </div>
                             <div className="percent"> {ratingAvg ? ratingAvg[0] * 100 : 0} % </div>
                         </div>
                         <div className="rating-item">
-                            <div className="rating">
+                            <div className="rating two">
                                 <Rating value={2} cancel={false} disabled stars={5} />
                             </div>
                             <div className="percent"> {ratingAvg ? ratingAvg[1] * 100 : 0} % </div>
                         </div>
-                        <div className="rating-item">
+                        <div className="rating-item three">
                             <div className="rating">
                                 <Rating value={3} cancel={false} disabled stars={5} />
                             </div>
                             <div className="percent"> {ratingAvg ? ratingAvg[2] * 100 : 0} %  </div>
                         </div>
-                        <div className="rating-item">
+                        <div className="rating-item four">
                             <div className="rating">
                                 <Rating value={4} cancel={false} disabled stars={5} />
                             </div>
                             <div className="percent"> {ratingAvg ? ratingAvg[3] * 100 : 0} % </div>
                         </div>
-                        <div className="rating-item">
+                        <div className="rating-item five">
                             <div className="rating">
                                 <Rating value={5} cancel={false} disabled stars={5} />
                             </div>
