@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { useDispatch } from 'react-redux';
 import { ReviewActionType } from '../../../common/type';
 import { Review } from '../../../models/review.model';
 import reviewService from '../../../services/review.service';

@@ -4,9 +4,9 @@ export class FilterModel {
     pageSize: number = 10;
 
     FilterModel(filter: string = '', offSet: number = 0, pageSize: number = 10) {
-        filter = filter;
-        offSet = offSet;
-        pageSize = pageSize;
+        this.filter = filter;
+        this.offSet = offSet;
+        this.pageSize = pageSize;
     }
  }
 
@@ -17,9 +17,9 @@ export class FilterModel {
     pageSize: number = 10;
 
     FilterReviewModel(companyId: number = -1, filter: string = '', offSet: number = 0, pageSize: number = 10) {
-        companyId = companyId;
-        filter = filter;
-        offSet = offSet;
-        pageSize = pageSize;
+        this.companyId = companyId;
+        this.filter = filter;
+        this.offSet = offSet;
+        this.pageSize = pageSize;
     }
  }

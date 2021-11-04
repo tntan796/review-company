@@ -87,7 +87,7 @@ function ReviewItem(props: PropType) {
                                     </div>
                                     <div className="name">{reply?.UserName}
                                         <span className="p-ml-1">
-                                            <i className={reply?.Favourite == ReviewActionType.like ? "pi pi-thumbs-up" : "pi pi-thumbs-down red"}></i>
+                                            <i className={reply?.Favourite === ReviewActionType.like ? "pi pi-thumbs-up" : "pi pi-thumbs-down red"}></i>
                                         </span>
                                     </div>
                                 </div>

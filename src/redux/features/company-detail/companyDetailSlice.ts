@@ -2,8 +2,6 @@ import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { Company } from '../../../models/company.model';
 import { Review } from '../../../models/review.model';
 import companyService from '../../../services/company.service';
-import reviewService from '../../../services/review.service';
-
 export const getCompanyDetail = createAsyncThunk('company/detail', async(params, thunkAPI) => {
     const companyDetail = await companyService.getCompanyById(5);
     return companyDetail.data.Data;

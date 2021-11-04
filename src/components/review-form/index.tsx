@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './styles.scss';
 import { InputText } from 'primereact/inputtext';
 import { useFormik } from 'formik';
@@ -7,7 +7,7 @@ import { classNames } from 'primereact/utils';
 import { Dropdown } from 'primereact/dropdown';
 import { InputTextarea } from 'primereact/inputtextarea';
 import { useDispatch, useSelector } from 'react-redux';
-import { hideDialog, setFormData, setReview, showDialog } from '../../redux/features/review-form/reviewFormSlice';
+import { hideDialog, setReview } from '../../redux/features/review-form/reviewFormSlice';
 import { Review } from '../../models/review.model';
 import { RootState } from '../../redux/store';
 import { ReviewActionType } from '../../common/type';
@@ -23,7 +23,7 @@ function ReviewForm(props: PropsType) {
     const type = useSelector((state: RootState) => state.reviewForm.type);
     const commentId = useSelector((state: RootState) => state.reviewForm.commentId);
     const companyId = useSelector((state: RootState) => state.reviewForm.companyId);
-    const [ratings, setRatings] = useState(
+    const [ratings] = useState(
         [
             { "name": "1 điểm - Max chán, né gấp kẻo hối không kịp", "code": '1' },
             { "name": "2 điểm - Hơi chán, để xem sao", "code": '2' },

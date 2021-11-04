@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './styles.scss';
 import ReviewItem from '../review-item';
 import { useParams } from 'react-router-dom';

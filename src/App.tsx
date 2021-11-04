@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { InputText } from 'primereact/inputtext';
+import { useEffect, useState } from 'react';
 import { Button } from 'primereact/button';
 import './App.scss';
 import {
