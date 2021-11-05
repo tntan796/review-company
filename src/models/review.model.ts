@@ -10,6 +10,7 @@ export class Review {
     Time? = '';
     Star? : string | {name: string, code: string} = '';
     CompanyId?: number | null = -1;
+    CompanyName? = '';
     Rating? = 0;
     Favourite?: ReviewActionType = ReviewActionType.like;
     Replies?: Review[] = []

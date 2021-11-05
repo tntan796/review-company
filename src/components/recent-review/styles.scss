@@ -1,0 +1,28 @@
+.recent-review-wrapper {
+    color: #495057;
+    .review-list {
+        .review-item {
+            display: inline;
+            flex-direction: column;
+            margin-top: 10px;
+
+            .right {
+                display: flex;
+                gap: 10px;
+            }
+
+            .name {
+                font-weight: 600;
+            }
+
+            .company-name {
+                color: dodgerblue;
+                cursor: pointer;
+            }
+
+            .right {
+                justify-content: space-between;
+            }
+        }
+    }
+}

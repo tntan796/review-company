@@ -11,6 +11,7 @@ import CompanyDetail from './components/company-detail';
 import CompanyList from './components/company-list';
 import { AutoComplete } from 'primereact/autocomplete';
 import { TabView, TabPanel } from 'primereact/tabview';
+import RecentReview from './components/recent-review';
 
 function App() {
   const [selectedCountry1, setSelectedCountry1] = useState<any>(null);
@@ -71,7 +72,7 @@ function App() {
             <Switch>
               <Route path="/" exact>
                 <div className="p-grid">
-                  <div className="p-col-12 p-md-9">
+                  <div className="p-col-12 p-md-8">
                     <TabView className="tabview-custom">
                       <TabPanel header="Mới cập nhật" leftIcon="pi pi-clock">
                         <CompanyList />
@@ -84,8 +85,9 @@ function App() {
                       </TabPanel>
                     </TabView>
                   </div>
-                  <div className="p-col-0 p-md-3">
-                    <h5>Nhận xét gần đây</h5>
+                  <div className="p-col-0 p-md-4">
+                    <h4>Nhận xét gần đây</h4>
+                    <RecentReview/>
                   </div>
                 </div>
               </Route>
